@@ -25,6 +25,9 @@ public class Config {
 	public int getDefaultMineAmount(){
 		return toInt(config.getString("defaultmineamount"));
 	}
+	public String getSaveDirectory(){
+		return config.getString("savedirectory");
+	}
 
 
 

@@ -8,6 +8,7 @@ import org.bukkit.command.TabExecutor;
 
 public class seichiCommand implements TabExecutor {
 	MultiSeichiEffect plugin;
+	
 
 	public seichiCommand(MultiSeichiEffect _plugin){
 		plugin = _plugin;

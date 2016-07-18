@@ -12,6 +12,8 @@ minutespeedamount: '0.01'
 # ログイン人数に応じた採掘速度変化(１人につき）
 onlineplayersamount: '0.5'
 
+savedirectory: ‘./‘
+
 
 
 

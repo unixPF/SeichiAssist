@@ -2,6 +2,12 @@ package com.github.unchama.multiseichieffect;
 
 import static com.github.unchama.multiseichieffect.Util.*;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.NotSerializableException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
 
@@ -13,9 +19,11 @@ import org.bukkit.inventory.ItemStack;
 
 public class gachaCommand implements TabExecutor{
 	public MultiSeichiEffect plugin;
+	private Config config;
 
 
-	public gachaCommand(MultiSeichiEffect plugin){
+	public gachaCommand(MultiSeichiEffect plugin,Config _config){
+		config = _config;
 		this.plugin = plugin;
 	}
 	@Override
@@ -61,6 +69,19 @@ public class gachaCommand implements TabExecutor{
 		}else if(args[0].equalsIgnoreCase("clear")){
 			Gachaclear(player);
 			return true;
+		}else if(args[0].equalsIgnoreCase("save")){
+			//セーブコマンド
+			try {
+				Gachasave(MultiSeichiEffect.gachaitem, config.getSaveDirectory());
+			} catch (NotSerializableException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
+			return true;
+		}else if(args[0].equalsIgnoreCase("load")){
+			//ロードコマンド
+			Gachaload(MultiSeichiEffect.gachaitem, config.getSaveDirectory());
+			return true;
 		}
 
 		return false;
@@ -97,6 +118,29 @@ public class gachaCommand implements TabExecutor{
 	private void Gachaclear(Player player) {
 		MultiSeichiEffect.gachaitem.clear();
 		player.sendMessage("すべて削除しました。");
+	}
+	
+	//セーブ処理（追加したところ）
+	private void Gachasave(HashMap<ItemStack,Double>map, String path) throws NotSerializableException{
+	    try{
+	        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path));
+	        oos.writeObject(map.clone());
+	        oos.flush();
+	        oos.close();
+	    }catch(Exception e){
+	        e.printStackTrace();
+	    }
+	}
+	//ロード処理（追加したところ）
+	private void Gachaload(HashMap<ItemStack, Double>map, String path) {
+		//HashMap<ItemStack, Double> read = new HashMap<ItemStack,Double>();
+		try{
+	    	ObjectInputStream oos = new ObjectInputStream(new FileInputStream(path));
+	    	MultiSeichiEffect.gachaitem = (HashMap<ItemStack,Double>)oos.readObject();
+	    	oos.close();
+	    }catch(Exception e){
+	        e.printStackTrace();
+	    }
 	}
 
 }

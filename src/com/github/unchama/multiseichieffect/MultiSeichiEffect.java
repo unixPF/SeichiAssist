@@ -31,7 +31,7 @@ public class MultiSeichiEffect extends JavaPlugin implements Listener {
 	//コマンドの一覧
 	private HashMap<String, TabExecutor> commands;
 
-	public static final HashMap<ItemStack,Double> gachaitem = new HashMap<ItemStack,Double>();
+	public static HashMap<ItemStack,Double> gachaitem = new HashMap<ItemStack,Double>();
 	public static final HashMap<Player,MineBlock> playermap = new HashMap<Player,MineBlock>();
 	public static final HashMap<Player,Boolean> playerflag = new HashMap<Player,Boolean>();
 
@@ -48,7 +48,7 @@ public class MultiSeichiEffect extends JavaPlugin implements Listener {
 
 		//コマンドの登録
 		commands = new HashMap<String, TabExecutor>();
-		commands.put("gacha", new gachaCommand(this/*,gachaitem*/));
+		commands.put("gacha", new gachaCommand(this, config));
 		commands.put("seichi", new seichiCommand(this));
 		commands.put("ef", new effectCommand(this));
 

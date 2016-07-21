@@ -62,7 +62,7 @@ public class MultiSeichiEffect extends JavaPlugin implements Listener {
 		//初回ガチャデータロード
 		//gachaCommand.java見ればわかるけどとりあえず実装しただけだからコードまとめたりはそのうちやる
 		gachaCommand.onEnableGachaLoad();
-		getLogger().info("ガチャデータのLoadを完了しました。");
+		getLogger().info("config.ymlからガチャデータを読み込みました。");
 
 		getLogger().info("SeichiPlugin is Enabled!");
 
@@ -76,10 +76,9 @@ public class MultiSeichiEffect extends JavaPlugin implements Listener {
 	}
 	@Override
 	public void onDisable() {
-		getLogger().info("SeichiPlugin is Disabled!");
-		saveConfig();
+		//saveConfig();
 		allplayertask.cancel();
-		//itemlistを保存したい。
+		getLogger().info("SeichiPlugin is Disabled!");
 	}
 
 	//プレイヤーがjoinした時に実行

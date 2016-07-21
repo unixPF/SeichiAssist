@@ -26,6 +26,8 @@ public class seichiCommand implements TabExecutor {
 		if(args.length == 0){
 			plugin.reloadConfig();
 			sender.sendMessage("MultiSeichiEffectのconfig.ymlをリロードしました。");
+			gachaCommand.onEnableGachaLoad();
+			sender.sendMessage("リロードしたconfig.ymlを元にガチャデータをセットしなおしました。");
 			return true;
 		}
 		return false;

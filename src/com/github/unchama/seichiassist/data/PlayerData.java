@@ -30,7 +30,7 @@ public class PlayerData {
 	//UUID
 	public UUID uuid;
 	//エフェクトのフラグ
-	public boolean effectflag;
+	public int effectflag;
 	//内訳メッセージを出すフラグ
 	public boolean messageflag;
 	//1分間のデータを保存するincrease:１分間の採掘量
@@ -139,7 +139,7 @@ public class PlayerData {
 		this.loaded = false;
 		this.name = Util.getName(player);
 		this.uuid = player.getUniqueId();
-		this.effectflag = true;
+		this.effectflag = 0;
 		this.messageflag = false;
 		//this.minuteblock = new MineBlock();
 		this.halfhourblock = new MineBlock();
@@ -408,12 +408,12 @@ public class PlayerData {
 
 		case NETHERRACK:
 			//ネザーラックの重み分け
-			result *= 0.2;
+			result *= 1.0;
 			break;
 
 		case ENDER_STONE:
 			//エンドストーンの重み分け
-			result *= 0.2;
+			result *= 1.0;
 			break;
 
 

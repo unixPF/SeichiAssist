@@ -152,7 +152,7 @@ public class LoadPlayerDataTaskRunnable extends BukkitRunnable{
  				playerdata.multipleidbreakflag = rs.getBoolean("multipleidbreakflag");
 
  				playerdata.pvpflag = rs.getBoolean("pvpflag");
- 				playerdata.totalbreaknum = rs.getInt("totalbreaknum");
+ 				playerdata.totalbreaknum = rs.getLong("totalbreaknum");
  				playerdata.playtick = rs.getInt("playtick");
  				playerdata.p_givenvote = rs.getInt("p_givenvote");
  				playerdata.activeskilldata.effectpoint = rs.getInt("effectpoint");
@@ -160,7 +160,9 @@ public class LoadPlayerDataTaskRunnable extends BukkitRunnable{
  				//マナの情報
  				playerdata.activeskilldata.mana.setMana(rs.getDouble("mana"));
  				playerdata.expbar.setVisible(rs.getBoolean("expvisible"));
+
  				playerdata.totalexp = rs.getInt("totalexp");
+
  				playerdata.expmarge = rs.getByte("expmarge");
  				playerdata.shareinv = (rs.getString("shareinv") != "" && rs.getString("shareinv") != null);
  				playerdata.everysoundflag = rs.getBoolean("everysound");
@@ -172,6 +174,7 @@ public class LoadPlayerDataTaskRunnable extends BukkitRunnable{
  				playerdata.displayTypeLv = rs.getBoolean("displayTypeLv");
  				playerdata.displayTitleNo = rs.getInt("displayTitleNo");
  				playerdata.p_vote_forT = rs.getInt("p_vote");
+ 				playerdata.giveachvNo = rs.getInt("giveachvNo");
 
  				//実績解除フラグのBitSet型への復元処理
  				//初回nullエラー回避のための分岐

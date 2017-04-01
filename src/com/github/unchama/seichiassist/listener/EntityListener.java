@@ -248,7 +248,7 @@ public class EntityListener implements Listener {
 		//減る経験値計算
 		//実際に破壊するブロック数  * 全てのブロックを破壊したときの消費経験値÷すべての破壊するブロック数 * 重力
 
-		double useMana = (double) (breaklist.size()) * (double) gravity
+		double useMana = (double) (breaklist.size()) * (double) (gravity + 1)
 				* ActiveSkill.getActiveSkillUseExp(playerdata.activeskilldata.skilltype, playerdata.activeskilldata.skillnum)
 				/(ifallbreaknum) ;
 		if(SeichiAssist.DEBUG){
@@ -314,7 +314,7 @@ public class EntityListener implements Listener {
 		//エフェクトが指定されていないときの処理
 		if(playerdata.activeskilldata.effectnum == 0){
 			for(Block b:breaklist){
-				BreakUtil.BreakBlock(player, b, player.getLocation(), tool,true);
+				BreakUtil.BreakBlock(player, b, player.getLocation(), tool,false);
 				SeichiAssist.allblocklist.remove(b);
 			}
 		}

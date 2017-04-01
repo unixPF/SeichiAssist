@@ -89,7 +89,7 @@ public class PlayerDataSaveTaskRunnable extends BukkitRunnable{
 				+ ",gachaflag = " + Boolean.toString(playerdata.gachaflag)
 				+ ",level = " + Integer.toString(playerdata.level)
 				+ ",rgnum = " + Integer.toString(playerdata.rgnum)
-				+ ",totalbreaknum = " + Integer.toString(playerdata.totalbreaknum)
+				+ ",totalbreaknum = " + Long.toString(playerdata.totalbreaknum)
 				+ ",inventory = '" + BukkitSerialization.toBase64(playerdata.inventory) + "'"
 				+ ",playtick = " + Integer.toString(playerdata.playtick)
 				+ ",lastquit = cast( now() as datetime )"
@@ -107,7 +107,8 @@ public class PlayerDataSaveTaskRunnable extends BukkitRunnable{
 				+ ",everysound = " + Boolean.toString(playerdata.everysoundflag)
 
 				+",displayTypeLv = " + Boolean.toString(playerdata.displayTypeLv)
-				+",displayTitleNo = " + Integer.toString(playerdata.displayTitleNo);
+				+",displayTitleNo = " + Integer.toString(playerdata.displayTitleNo)
+				+",giveachvNo = " + Integer.toString(playerdata.giveachvNo);
 
 				//MineStack機能の数値更新処理
 
